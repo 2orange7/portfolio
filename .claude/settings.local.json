@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sed -i '431s/.*/.left-bottom { grid-column: 1; grid-row: 4; padding-bottom: 16px; }/' index.html)",
+      "Bash(sed -i '432s/.*/.sticky-note { max-width: 100%; transform: rotate\\(-1deg\\); }/' index.html)",
+      "Bash(sed -i '431s/^/\\\\t/' index.html)",
+      "Bash(sed -i '432s/^/\\\\t/' index.html)",
+      "Bash(python3)",
+      "Bash(sed -i '431s/overflow-y: auto;/height: auto; min-height: 100vh;/' index.html)",
+      "Bash(sed -i '436s/^\\\\t\\\\t\\\\.left-bottom/  .left-bottom/' index.html)",
+      "Bash(sed -i '437s/^\\\\t\\\\t\\\\.sticky-note/  .sticky-note/' index.html)",
+      "Bash(python3 -c ' *)",
+      "Bash(sed -i '436s/^[[:space:]]*\\\\.left-bottom/  .left-bottom/' index.html)",
+      "Bash(sed -i '437s/^[[:space:]]*\\\\.sticky-note/  .sticky-note/' index.html)",
+      "Bash(sed -n '435,438p' index.html)",
+      "Bash(start *)",
+      "Bash(sed -n '1444,1463p' \"C:\\\\Users\\\\32801\\\\OneDrive\\\\桌面\\\\26-06暑假实习\\\\skill尝试\\\\个人网页\\\\index.html\")",
+      "Read(//tmp/**)",
+      "Bash(xxd *)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\32801\\\\OneDrive\\\\桌面\\\\26-06暑假实习\\\\skill尝试\\\\个人网页\" -Force)",
+      "Bash(Format-Table Name, Length, LastWriteTime)",
+      "Bash(powershell.exe *)",
+      "Read(//c/Users/32801/AppData/Roaming/Code/User/**)",
+      "Read(//c/Users/32801/**)",
+      "WebFetch(domain:127.0.0.1)",
+      "Bash(curl -s \"http://127.0.0.1:5500/index.html\")"
+    ]
+  }
+}
