@@ -81,7 +81,7 @@
       flex-direction: column;
       justify-content: flex-start;
       padding-top: clamp(110px, 15vh, 170px);
-      padding-left: clamp(16px, 2vw, 30px);
+      padding-left: clamp(36px, 2vw, 50px);
     }
     
     .title-line {
@@ -108,21 +108,20 @@
     .nav-blocks {
       position: fixed;
       top: 1.2rem;
-      right: 2rem;
-      z-index: 99999;
+      right: calc(2rem + 10px);
+      z-index: 999;
       display: flex;
-      gap: 0.5rem;
+      gap: 1.3rem;
     }
     
     .nav-block {
       display: inline-flex;
       align-items: center;
-      padding: 8px 16px;
+      padding: 10px 33px;
       font-family: 'JetBrains Mono', 'Cascadia Code', 'Consolas', monospace;
-      font-size: 13px;
+      font-size: 13.5px;
       font-weight: 500;
       color: #fff;
-      border-radius: 6px;
       white-space: nowrap;
       text-decoration: none;
       transform: rotate(var(--rot, 0deg));
@@ -138,16 +137,16 @@
       box-shadow: 3px 6px 0 rgba(0,0,0,0.18), 0 10px 28px rgba(0,0,0,0.14);
     }
     
-    .nav-block--1 { background: #f5a623; --rot: -1.5deg; }
-    .nav-block--2 { background: #e8913a; --rot: 2deg; }
-    .nav-block--3 { background: #f17b3b; --rot: -2deg; }
-    .nav-block--4 { background: #f5a623; --rot: 1deg; }
+    .nav-block--1 { background: #e4281f; --rot: -1.5deg; }
+    .nav-block--2 { background: #9db3e5; --rot: 2deg; }
+    .nav-block--3 { background: #1a3fcc; --rot: -2deg; }
+    .nav-block--4 { background: #fe8a0e; --rot: 1deg; }
     
     /* ========== STICKY NOTE (absolute) ========== */
     .sticky-note {
       position: absolute;
       top: calc(58% - 3px);
-      left: clamp(70px, 9vw, 110px);
+      left: clamp(90px, 9vw, 130px);
       z-index: 2;
       background: linear-gradient(175deg, #fffef7 0%, #fef9e7 40%, #fdf3d0 100%);
       max-width: 390px;
@@ -225,7 +224,7 @@
     .annotations {
       position: absolute;
       top: 83%;
-      left: clamp(70px, 9vw, 110px);
+      left: clamp(90px, 9vw, 130px);
       z-index: 2;
       display: flex;
       flex-direction: column;
@@ -253,6 +252,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transform: translate(70px, 15px);
       position: relative;
       z-index: 1;
     }
@@ -463,7 +463,7 @@
       min-width: 0;
       overflow: visible;
       margin: 0 auto;
-      padding: 20px 0 80px;
+      padding: 10px 0 40px;
     }
     
     /* ---- Blue vertical line ---- */
@@ -483,90 +483,45 @@
     .timeline-node {
       position: relative;
       display: flex;
+      flex-direction: row;
       align-items: flex-start;
-      margin-bottom: clamp(16px, 2.5vh, 36px);
+      margin-bottom: clamp(8px, 1.5vh, 20px);
       z-index: 2;
-      min-height: 300px;
-      width: auto;
+      width: 100%;
       min-width: 0;
       overflow: visible;
     }
-    
+
     /* ---- Timeline Dot (circle on the line) ---- */
     .timeline-dot {
       position: absolute;
       left: 50%;
       top: 0;
-      transform: translate(-50%, 0);
-      width: 16px;
-      height: 16px;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
-      border: 3px solid var(--blue-deep);
+      border: 4px solid var(--blue-deep);
       background: var(--bg);
       z-index: 3;
     }
-    
-    .timeline-dot--bottom {
-      top: 30px;
+
+    /* ---- Left column (center-axis left side) ---- */
+    .timeline-left {
+      width: calc(50% - 10px);
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 40px;
+      box-sizing: border-box;
     }
-    
-    /* ---- Node layout: left content, right card ---- */
-    .timeline-node--left {
-      flex-direction: row;
-    }
-    .timeline-node--left .timeline-content {
-      width: 480px;
-      min-width: 480px;
-      padding-right: 36px;
-      text-align: right;
-      margin-left: clamp(60px, 9vw, 140px);
-    }
-    .timeline-node--left .timeline-card {
-      margin-left: auto;
-      margin-right: clamp(60px, 8vw, 130px);
-    }
-    
-    /* ---- Node layout: right content, left card ---- */
-    .timeline-node--right {
-      flex-direction: row-reverse;
-    }
-    .timeline-node--right .timeline-content {
-      width: 480px;
-      min-width: 480px;
-      padding-left: 20px;
-      text-align: left;
-      margin-right: clamp(60px, 9vw, 140px);
-    }
-    .timeline-node--right .timeline-card {
-      margin-right: auto;
-      margin-left: clamp(60px, 8vw, 130px);
-    }
-    
-    /* ---- Timeline Arcs ---- */
-    .timeline-arc {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 1;
-      width: clamp(120px, 14vw, 200px);
-      height: 140px;
-      pointer-events: none;
-    }
-    
-    .timeline-arc--1 {
-      top: 20px;
-    }
-    
-    .timeline-arc--between {
-      position: relative;
-      display: block;
-      left: 50%;
-      transform: translateX(-50%);
-      width: clamp(120px, 14vw, 200px);
-      height: 130px;
-      margin: -30px 0 -30px;
-      z-index: 1;
-      pointer-events: none;
+
+    /* ---- Right column (center-axis right side) ---- */
+    .timeline-right {
+      width: calc(50% - 10px);
+      display: flex;
+      justify-content: flex-start;
+      padding-left: 40px;
+      box-sizing: border-box;
     }
     
     /* ---- Timeline Content ---- */
@@ -574,11 +529,9 @@
       background: rgba(255, 255, 255, 0.85);
       border-radius: 8px;
       border: 1px solid rgba(0, 0, 0, 0.06);
-      padding: 1.5rem 2rem;
-      width: 340px;
-      min-width: 340px;
-      flex-shrink: 0;
-      flex-grow: 0;
+      padding: 1rem 1.5rem;
+      width: 440px;
+      min-width: 0;
       box-sizing: border-box;
     }
     
@@ -666,9 +619,8 @@
     /* ---- Timeline Photo Cards ---- */
     .timeline-card {
       position: relative;
-      width: clamp(280px, 30vw, 420px);
-      height: clamp(180px, 20vw, 260px);
-      flex-shrink: 0;
+      width: clamp(300px, 32vw, 460px);
+      height: clamp(200px, 22vw, 280px);
       background: #fdfdfd;
       box-shadow: 3px 4px 18px rgba(0,0,0,0.07), 1px 2px 4px rgba(0,0,0,0.04);
       display: flex;
@@ -681,14 +633,6 @@
         95% 5.5%, 98% 4%, 100% 5%,
         100% 100%, 0% 100%
       );
-    }
-    
-    .timeline-card--right {
-      transform: rotate(2deg);
-    }
-    
-    .timeline-card--left {
-      transform: rotate(-2deg);
     }
     
     .card-inner {
@@ -720,21 +664,11 @@
       font-size: 13px;
       color: #1a1a2e;
       position: relative;
-      flex-shrink: 0;
       width: clamp(200px, 22vw, 320px);
       height: auto;
       min-height: 140px;
     }
     
-    .timeline-node--left .timeline-doodle-card {
-      margin-left: auto;
-      margin-right: clamp(60px, 8vw, 130px);
-    }
-    
-    .timeline-node--right .timeline-doodle-card {
-      margin-right: auto;
-      margin-left: clamp(60px, 8vw, 130px);
-    }
     
     .doodle-star {
       position: absolute;
@@ -807,36 +741,32 @@
       .chronicle-title-outline { max-width: 100%; font-size: clamp(42px, 10vw, 70px); }
       .timeline-line { left: 24px; }
       .timeline-dot { left: 24px; }
-      .timeline-node,
-      .timeline-node--left,
-      .timeline-node--right { flex-direction: column; padding-left: 50px; }
-      .timeline-node--left .timeline-content,
-      .timeline-node--right .timeline-content { width: 100%; padding: 0; text-align: left; }
+      .timeline-node { flex-direction: column; padding-left: 50px; }
+      .timeline-left,
+      .timeline-right { width: 100%; padding: 0; justify-content: flex-start; }
+      .timeline-content { width: auto; min-width: 0; text-align: left; }
       .timeline-card { width: 260px; height: 160px; margin: 16px 0 0 !important; }
       .timeline-heading { font-size: 28px; }
-          .timeline-doodle-card { width: 260px; min-height: 120px; margin: 16px 0 0 !important; }
-      .timeline-content { width: auto; min-width: 0; flex-shrink: 1; flex-grow: 1; }
+      .timeline-doodle-card { width: 260px; min-height: 120px; margin: 16px 0 0 !important; }
       .timeline-body { font-size: 14px; max-width: 100%; }
       .timeline-section-body { font-size: 14px; }
       .timeline-quote { font-size: 13px; max-width: 100%; }
-      .timeline-arc,
-      .timeline-arc--between { left: 24px; transform: none; width: 80px; }
     }
     
     @media (max-width: 480px) {
       .page { padding: 16px; }
       .title-outline { font-size: clamp(28px, 6vw, 44px); -webkit-text-stroke: 2px var(--blue-deep); }
       .title-solid { font-size: clamp(40px, 9vw, 64px); }
-      .nav-block { font-size: 11px; padding: 6px 12px; }
+      .nav-block { font-size: 12.5px; padding: 10px 23px; }
       .sticky-note { padding: 16px 18px 14px; }
       .note-content { font-size: 13px; }
       .photo-backdrop { width: 170px; height: 280px; }
       .photo-frame { width: 140px; height: 240px; }
       .chronicle-title-outline { font-size: clamp(36px, 10vw, 52px); }
       .timeline-card { width: 240px; height: 140px; }
-          .timeline-doodle-card { width: 240px; min-height: 100px; }
+      .timeline-doodle-card { width: 240px; min-height: 100px; }
       .timeline-heading { font-size: 24px; }
-      .timeline-content { width: auto; min-width: 0; flex-shrink: 1; flex-grow: 1; }
+      .timeline-content { width: auto; min-width: 0; }
       .timeline-body { font-size: 13px; max-width: 100%; }
       .timeline-section-body { font-size: 13px; }
       .timeline-quote { font-size: 12px; max-width: 100%; }
@@ -1352,20 +1282,12 @@
     .photo-book-hint-left:hover, .photo-book-hint-right:hover { color: #fff; transform: scale(1.1); }
     .photo-book-hint-left.hidden, .photo-book-hint-right.hidden { visibility: hidden; }
     
-    /* Accordion modal */
-    .more-modal--accordion { flex-direction: row; padding: 0; background: #fefefe; border-radius: 8px; box-shadow: 0 12px 48px rgba(0,0,0,0.2); max-width: 80vw; max-height: 85vh; }
-    .more-modal--accordion .more-modal__img-area { flex: 1; min-height: 400px; background: #f0f0f0; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #999; }
-    .more-modal--accordion .more-modal__img-area img { width: 100%; height: 100%; object-fit: cover; }
-    .more-modal--accordion .more-modal__text-area { flex: 0 0 280px; padding: 48px 32px; display: flex; align-items: center; font-family: 'Noto Serif SC', serif; font-size: 22px; line-height: 1.8; color: #333; }
-    
     @media (max-width: 768px) {
       .more-cards { min-height: auto; }
       .more-card { position: relative !important; width: 100% !important; max-width: 320px; margin: 0 auto 24px; top: auto !important; left: auto !important; right: auto !important; transform: none !important; }
       .photo-book-book { width: 94vw !important; height: auto !important; aspect-ratio: 900/380; }
       .photo-book-quote { font-size: 14px; }
       .photo-book-page-content { padding: 16px; }
-      .more-modal--accordion { flex-direction: column; max-width: 95vw; }
-      .more-modal--accordion .more-modal__text-area { flex: auto; padding: 24px; font-size: 18px; }
     }
 
     /* ================================================================
@@ -1617,8 +1539,8 @@
     
     <!-- ===== NAVIGATION (fixed, body's first child) ===== -->
     <nav class="nav-blocks">
-      <a class="nav-block nav-block--1" href="#experience">/ 经历</a>
-      <a class="nav-block nav-block--2" href="#projects">/ 项目</a>
+      <a class="nav-block nav-block--1" href="#projects">/ 项目</a>
+      <a class="nav-block nav-block--2" href="#experience">/ 经历</a>
       <a class="nav-block nav-block--3" href="#more">/ 更多</a>
       <a class="nav-block nav-block--4" href="#contact">/ 联系我</a>
     </nav>
@@ -1734,162 +1656,6 @@
     </div>
     
     </section><!-- end hero-section -->
-    
-    <!-- ============================================================ -->
-    <!-- ===== CHRONICLE SECTION — 经历 ===== -->
-    <!-- ============================================================ -->
-    <section class="chronicle-section" id="experience">
-    
-      <!-- ===== SECTION TITLE ===== -->
-      <div class="chronicle-header">
-        <span class="chronicle-title-outline">经历</span>
-        <p class="chronicle-subtitle">mapping the experience — 教育与成长</p>
-      </div>
-    
-      <!-- ===== TIMELINE ===== -->
-      <div class="timeline">
-    
-        <!-- Vertical blue line -->
-        <div class="timeline-line"></div>
-    
-        <!-- === NODE 1: 深圳中学 === -->
-        <div class="timeline-node timeline-node--left">
-          <div class="timeline-dot"></div>
-          <svg class="timeline-arc timeline-arc--1" viewBox="0 0 200 140" fill="none" preserveAspectRatio="none">
-            <path d="M100,0 C160,30 180,70 140,110 C125,130 100,140 100,140" stroke="#f5a623" stroke-width="2" stroke-dasharray="8 5" stroke-linecap="round" fill="none"></path>
-          </svg>
-          <div class="timeline-content">
-            <span class="timeline-date">2018.09 — 2024.06</span>
-            <span class="timeline-label">初中 + 高中</span>
-            <h3 class="timeline-heading">深圳中学</h3>
-            <p class="timeline-quote" style="text-align:right; font-size:14px; max-width:400px; margin-left:auto;">"在这里，我和同伴们畅快地谈论理想与远方，相信自己终将成为个性鲜明、充满自信、敢于负责的人。无论身在何处，都能热忱服务社会，并在其中表现出对自然的尊重和对他人的关爱。"</p>
-          </div>
-          <div class="timeline-card timeline-card--right">
-            <img src="./深中照片.jpg" alt="深圳中学" style="width:100%; height:100%; object-fit:cover;">
-          </div>
-        </div>
-    
-        <!-- Arc connecting node 1 to node 2 -->
-        <svg class="timeline-arc timeline-arc--between" viewBox="0 0 200 130" fill="none" preserveAspectRatio="none">
-          <path d="M100,0 C40,29 20,65 60,101 C80,119 100,130 100,130" stroke="#f5a623" stroke-width="2" stroke-dasharray="8 5" stroke-linecap="round" fill="none"></path>
-        </svg>
-    
-        <!-- === NODE 2: 香港中文大学（深圳）=== -->
-        <div class="timeline-node timeline-node--right">
-          <div class="timeline-dot timeline-dot--bottom"></div>
-          <div class="timeline-content">
-            <span class="timeline-date">2024.09 — 至今</span>
-            <span class="timeline-label">本科 · 商务经济</span>
-            <h3 class="timeline-heading">香港中文大学（深圳）</h3>
-            <div class="timeline-body" style="margin:0; padding:0;">
-              <p style="margin:0; padding:4px 0; white-space:normal; word-break:normal; overflow-wrap:break-word;">GPA 3.79/4.0（专业前 6%）</p>
-              <p style="margin:0; padding:2px 0; white-space:nowrap;">• 荣誉奖项：院长嘉许名单、学业奖学金（2024–2025）</p>
-              <p style="margin:0; padding:2px 0; white-space:normal; word-break:normal; overflow-wrap:break-word;">• 主修课程：市场管理(A)、消费者行为、概率与统计(A-)、财务管理(A)、人工智能与社会</p>
-              <p style="margin:0; padding:4px 0; white-space:normal; word-break:normal; overflow-wrap:break-word; font-style:italic; color:#666666;">"在这里，开始触摸真实世界的分量。"</p>
-            </div>
-          </div>
-          <div class="timeline-card timeline-card--left">
-            <img src="./港中深照片.jpg" alt="香港中文大学（深圳）" style="width:100%; height:100%; object-fit:cover;">
-          </div>
-        </div>
-    
-        <!-- Arc connecting node 2 to node 3 -->
-        <svg class="timeline-arc timeline-arc--between" viewBox="0 0 200 130" fill="none" preserveAspectRatio="none">
-          <path d="M100,0 C40,29 20,65 60,101 C80,119 100,130 100,130" stroke="#f5a623" stroke-width="2" stroke-dasharray="8 5" stroke-linecap="round" fill="none"></path>
-        </svg>
-    
-        <!-- === NODE 3: 深圳一瓯茶 === -->
-        <div class="timeline-node timeline-node--left">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content" style="width:480px; min-width:480px; max-width:480px; flex-shrink:0; flex-grow:0; margin-left:clamp(60px,9vw,140px); padding-right:20px;">
-            <span class="timeline-date">2025.03 — 2025.05</span>
-            <span class="timeline-label">市场部 · 项目负责人</span>
-            <h3 class="timeline-heading" style="text-align:left;">深圳一瓯茶有限公司</h3>
-            <p style="margin:0 0 14px 0; padding:0; text-align:left; font-family:'JetBrains Mono',monospace; font-size:14px; font-weight:400; color:#111; line-height:1.9; width:100%; white-space:normal; word-break:normal; overflow-wrap:break-word; hyphens:none;"><svg style="width:14px;height:14px;margin-right:6px;margin-bottom:2px;vertical-align:middle;display:inline-block;" viewBox="0 0 14 14" fill="none" stroke="#f5a623" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M7,0.5 L8.7,4.5 L13,4.8 L9.4,8 L10.6,12.5 L7,10 L3.4,12.5 L4.6,8 L1,4.8 L5.3,4.5 Z"></path></svg><span style="font-weight:700;">用户洞察：</span>主导「春日记忆」活动策划与落地，现场追踪用户行为发现原规则参与门槛过高导致用户流失；将捆绑式参与条件拆解为独立分层激励，现场转化率从不足10%提升至约12%；活动累计吸引110+用户参与</p>
-            <p style="margin:0; padding:0; text-align:left; font-family:'JetBrains Mono',monospace; font-size:14px; font-weight:400; color:#111; line-height:1.9; width:100%; white-space:normal; word-break:normal; overflow-wrap:break-word; hyphens:none;"><svg style="width:14px;height:14px;margin-right:6px;margin-bottom:2px;vertical-align:middle;display:inline-block;" viewBox="0 0 14 14" fill="none" stroke="#f5a623" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M7,0.5 L8.7,4.5 L13,4.8 L9.4,8 L10.6,12.5 L7,10 L3.4,12.5 L4.6,8 L1,4.8 L5.3,4.5 Z"></path></svg><span style="font-weight:700;">项目管理：</span>在资源有限、标准缺失的环境下主导活动落地；识别海报返工原因为文案信息过载影响视觉呈现，优先精简文案，降低返工成本；发现物料供应存在延误风险，快速切换为本地供应渠道应急</p>
-          </div>
-          <div class="timeline-doodle-card" style="transform:rotate(2deg); margin-left:clamp(30px,4vw,60px); margin-right:clamp(60px,8vw,130px); flex-shrink:0; position:relative; width:200px; min-height:auto; padding:1rem;">
-            <div style="font-family:'JetBrains Mono','Cascadia Code','Consolas',monospace; font-size:11px; color:#b08830; margin-bottom:8px; letter-spacing:0.04em;">春日记忆 · 活动推文</div>
-            <a href="https://mp.weixin.qq.com/s/-ktvpw9HY8xKiq7L-ocdJA" target="_blank" style="display:block; text-decoration:none;">
-              <img src="./poster.jpg" alt="春日记忆活动海报" style="width:100%; height:auto; max-height:260px; object-fit:cover; border-radius:3px; border:1px solid rgba(244,114,182,0.3); display:block;">
-            </a>
-            <a href="https://mp.weixin.qq.com/s/-ktvpw9HY8xKiq7L-ocdJA" target="_blank" style="display:inline-block; margin-top:8px; background:#f5a623; color:white; font-size:11px; padding:4px 10px; border:none; border-radius:2px; cursor:pointer; text-decoration:none; font-family:'JetBrains Mono','Cascadia Code','Consolas',monospace;">查看海报 →</a>
-            <svg style="position:absolute; bottom:8px; right:8px; width:14px; height:14px; opacity:0.85;" viewBox="0 0 14 14" fill="none" stroke="#f5a623" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">
-              <path d="M7,0.5 L8.7,4.5 L13,4.8 L9.4,8 L10.6,12.5 L7,10 L3.4,12.5 L4.6,8 L1,4.8 L5.3,4.5 Z"></path>
-            </svg>
-          </div>
-        </div>
-    
-        <!-- Arc connecting node 3 to node 4 -->
-        <svg class="timeline-arc timeline-arc--between" viewBox="0 0 200 130" fill="none" preserveAspectRatio="none">
-          <path d="M100,0 C160,29 180,65 140,101 C120,119 100,130 100,130" stroke="#f5a623" stroke-width="2" stroke-dasharray="8 5" stroke-linecap="round" fill="none"></path>
-        </svg>
-    
-        <!-- === NODE 4: 科尔尼 · PTA === -->
-        <div class="timeline-node timeline-node--right" style="min-height:0; margin-bottom:-130px;">
-          <div class="timeline-dot timeline-dot--bottom"></div>
-          <div class="timeline-content">
-            <span class="timeline-date">2025.10 — 2026.01</span>
-            <span class="timeline-label">PTA</span>
-            <h3 class="timeline-heading">科尔尼咨询</h3>
-            <p style="margin:0 0 14px 0; padding:0; text-align:left; font-family:'JetBrains Mono',monospace; font-size:14px; font-weight:400; color:#111; line-height:1.9; word-break:normal; overflow-wrap:break-word;"><svg style="width:14px;height:14px;margin-right:6px; margin-bottom:2px;vertical-align:middle;display:inline-block;" viewBox="0 0 14 14" fill="none" stroke="#f5a623" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M7,0.5 L8.7,4.5 L13,4.8 L9.4,8 L10.6,12.5 L7,10 L3.4,12.5 L4.6,8 L1,4.8 L5.3,4.5 Z"></path></svg><span style="font-weight:700;">结构化分析：</span>针对乳制品市场多源数据口径差异问题，统一品类分类和估算方法，整合各品类市场规模与增速数据，提升多源数据可比性，确保策略底稿准确</p>
-            <p style="margin:0; padding:0; text-align:left; font-family:'JetBrains Mono',monospace; font-size:14px; font-weight:400; color:#111; line-height:1.9; word-break:normal; overflow-wrap:break-word;"><svg style="width:14px;height:14px;margin-right:6px; margin-bottom:2px;vertical-align:middle;display:inline-block;" viewBox="0 0 14 14" fill="none" stroke="#f5a623" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M7,0.5 L8.7,4.5 L13,4.8 L9.4,8 L10.6,12.5 L7,10 L3.4,12.5 L4.6,8 L1,4.8 L5.3,4.5 Z"></path></svg><span style="font-weight:700;">竞品分析：</span>通过多语种渠道检索整合100+竞品信息，结合体量、品类结构、渠道策略等维度梳理竞品图谱；规范化整理专家访谈纪要，推动信息同步</p>
-          </div>
-        </div>
-    
-        <!-- Arc connecting node 4 to node 5 -->
-        <svg class="timeline-arc timeline-arc--between" viewBox="0 0 200 130" fill="none" preserveAspectRatio="none">
-          <path d="M100,0 C40,29 20,65 60,101 C80,119 100,130 100,130" stroke="#f5a623" stroke-width="2" stroke-dasharray="8 5" stroke-linecap="round" fill="none"></path>
-        </svg>
-    
-        <!-- === NODE 5: Shopee · SSP === -->
-        <div class="timeline-node timeline-node--left">
-          <div class="timeline-dot" style="top:30px;"></div>
-          <div class="timeline-content">
-            <span class="timeline-date">2026.02 — 2026.05</span>
-            <span class="timeline-label">华人战略卖家激励项目</span>
-            <h3 class="timeline-heading">Shopee</h3>
-            <p style="margin:0 0 12px 0; padding:0; text-align:left; font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:400; color:#1a3fcc; line-height:1.8; word-break:normal; overflow-wrap:break-word;">通过对入围卖家设置GMV与营销投入目标、向达标卖家发放激励的涨则返机制，以平台投入换取卖家在平台的增长；负责卖家圈选、目标制定、达标推送的数据支撑与流程优化</p>
-            <p style="margin:0 0 14px 0; padding:0; text-align:left; font-family:'JetBrains Mono',monospace; font-size:14px; font-weight:400; color:#111; line-height:1.9; word-break:normal; overflow-wrap:break-word;"><svg style="width:14px;height:14px;margin-right:6px; margin-bottom:2px;vertical-align:middle;display:inline-block;" viewBox="0 0 14 14" fill="none" stroke="#f5a623" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M7,0.5 L8.7,4.5 L13,4.8 L9.4,8 L10.6,12.5 L7,10 L3.4,12.5 L4.6,8 L1,4.8 L5.3,4.5 Z"></path></svg><span style="font-weight:700;">业务建模：</span>主导Q3卖家初筛，整合2.7万条跨时间、站点、GGP维度数据，依据ADG体量、PC2表现、同比增长率等多因子条件筛选500+卖家；理解SOB分层下的Grow/Defend差异化激励逻辑，完成300+卖家月度目标推送</p>
-            <p style="margin:0; padding:0; text-align:left; font-family:'JetBrains Mono',monospace; font-size:14px; font-weight:400; color:#111; line-height:1.9; word-break:normal; overflow-wrap:break-word;"><svg style="width:14px;height:14px;margin-right:6px; margin-bottom:2px;vertical-align:middle;display:inline-block;" viewBox="0 0 14 14" fill="none" stroke="#f5a623" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M7,0.5 L8.7,4.5 L13,4.8 L9.4,8 L10.6,12.5 L7,10 L3.4,12.5 L4.6,8 L1,4.8 L5.3,4.5 Z"></path></svg><span style="font-weight:700;">流程优化：</span>针对达标推送中的重复性执行环节，识别其数据驱动、规则固定、输出格式标准化的特点，开发Apps Script脚本实现自动化，将单次执行时间从2小时压缩至2分钟，工具已被团队继任者复用</p>
-          </div>
-        </div>
-    
-      </div><!-- end timeline -->
-    
-      <!-- ===== Chronicle decorative layer ===== -->
-      <div class="chronicle-deco">
-        <!-- Stars -->
-        <svg class="deco-star-ch" style="position:absolute; top:8%; right:12%; width:20px; height:20px; opacity:0.5;" viewBox="0 0 24 24" fill="none" stroke="#1a3fcc" stroke-width="1.8">
-          <polygon points="12,2 14.5,9 22,9 16,13.5 18.5,21 12,16.5 5.5,21 8,13.5 2,9 9.5,9" stroke-linejoin="round"></polygon>
-        </svg>
-        <svg class="deco-star-ch" style="position:absolute; top:35%; right:5%; width:16px; height:16px; opacity:0.45;" viewBox="0 0 24 24" fill="none" stroke="#f5a623" stroke-width="2">
-          <polygon points="12,2 14.5,9 22,9 16,13.5 18.5,21 12,16.5 5.5,21 8,13.5 2,9 9.5,9" stroke-linejoin="round"></polygon>
-        </svg>
-        <svg class="deco-star-ch" style="position:absolute; bottom:20%; left:4%; width:18px; height:18px; opacity:0.4;" viewBox="0 0 24 24" fill="none" stroke="#1a3fcc" stroke-width="1.6">
-          <polygon points="12,2 14.5,9 22,9 16,13.5 18.5,21 12,16.5 5.5,21 8,13.5 2,9 9.5,9" stroke-linejoin="round"></polygon>
-        </svg>
-        <svg class="deco-star-ch" style="position:absolute; bottom:10%; right:20%; width:14px; height:14px; opacity:0.5;" viewBox="0 0 24 24" fill="none" stroke="#f472b6" stroke-width="1.8">
-          <polygon points="12,2 14.5,9 22,9 16,13.5 18.5,21 12,16.5 5.5,21 8,13.5 2,9 9.5,9" stroke-linejoin="round"></polygon>
-        </svg>
-        <!-- Dots -->
-        <div style="position:absolute; top:20%; right:22%; width:5px; height:5px; border-radius:50%; background:var(--blue-deep); opacity:0.35;"></div>
-        <div style="position:absolute; top:55%; left:6%; width:6px; height:6px; border-radius:50%; background:var(--blue-deep); opacity:0.3;"></div>
-        <div style="position:absolute; bottom:35%; right:10%; width:4px; height:4px; border-radius:50%; background:var(--blue-deep); opacity:0.4;"></div>
-        <!-- Curved text -->
-        <svg style="position:absolute; top:30%; right:3%; width:140px; height:140px; opacity:0.45;" viewBox="0 0 140 140">
-          <defs>
-            <path id="arcPath2" d="M 8,120 A 90,90 0 0,1 132,18"></path>
-          </defs>
-          <text font-family="'JetBrains Mono','Cascadia Code','Consolas',monospace" font-size="9" fill="#1a3fcc" opacity="0.55" letter-spacing="0.12em">
-            <textPath href="#arcPath2" startOffset="5%">
-              ✦ education · growth · journey ✦
-            </textPath>
-          </text>
-        </svg>
-      </div>
-    
-    </section><!-- end chronicle-section -->
     
     <!-- ============================================================ -->
     <!-- ===== PROJECTS SECTION — 项目 ===== -->
@@ -2195,6 +1961,164 @@
     </section><!-- end projects-section -->
     
     <!-- ============================================================ -->
+    <!-- ===== CHRONICLE SECTION — 经历 ===== -->
+    <!-- ============================================================ -->
+    <section class="chronicle-section" id="experience">
+    
+      <!-- ===== SECTION TITLE ===== -->
+      <div class="chronicle-header">
+        <span class="chronicle-title-outline">经历</span>
+        <p class="chronicle-subtitle">mapping the experience — 教育与成长</p>
+      </div>
+    
+      <!-- ===== TIMELINE ===== -->
+      <div class="timeline">
+    
+        <!-- Vertical blue line -->
+        <div class="timeline-line"></div>
+    
+        <!-- === NODE 1: 深圳中学 === -->
+        <div class="timeline-node" style="margin-bottom:clamp(25px,4.2vh,50px);">
+          <div class="timeline-dot"></div>
+          <div class="timeline-left">
+            <div class="timeline-content">
+              <span class="timeline-date">2018.09 — 2024.06</span>
+              <span class="timeline-label">初中 + 高中</span>
+              <h3 class="timeline-heading">深圳中学</h3>
+              <p class="timeline-quote" style="text-align:right; font-size:14px; max-width:400px; margin-left:auto;">"在这里，我和同伴们畅快地谈论理想与远方，相信自己终将成为个性鲜明、充满自信、敢于负责的人。无论身在何处，都能热忱服务社会，并在其中表现出对自然的尊重和对他人的关爱。"</p>
+            </div>
+          </div>
+          <div class="timeline-right">
+            <div class="timeline-card">
+              <img src="./深中照片.jpg" alt="深圳中学" style="width:100%; height:100%; object-fit:cover;">
+            </div>
+          </div>
+        </div>
+    
+    
+        <!-- === NODE 2: 香港中文大学（深圳）=== -->
+        <div class="timeline-node" style="margin-bottom:clamp(25px,4.2vh,50px);">
+          <div class="timeline-dot"></div>
+          <div class="timeline-left">
+            <div class="timeline-card">
+              <img src="./港中深照片.jpg" alt="香港中文大学（深圳）" style="width:100%; height:100%; object-fit:cover;">
+            </div>
+          </div>
+          <div class="timeline-right">
+            <div class="timeline-content">
+              <span class="timeline-date">2024.09 — 至今</span>
+              <span class="timeline-label">本科 · 商务经济</span>
+              <h3 class="timeline-heading">香港中文大学（深圳）</h3>
+              <div class="timeline-body" style="margin:0; padding:0;">
+                <p style="margin:0; padding:4px 0; white-space:normal; word-break:normal; overflow-wrap:break-word;">GPA 3.79/4.0（专业前 6%）</p>
+                <p style="margin:0; padding:2px 0; white-space:nowrap;">• 荣誉奖项：院长嘉许名单、学业奖学金（2024–2025）</p>
+                <p style="margin:0; padding:2px 0; white-space:normal; word-break:normal; overflow-wrap:break-word;">• 主修课程：市场管理(A)、消费者行为、概率与统计(A-)、财务管理(A)、人工智能与社会</p>
+                <p style="margin:0; padding:4px 0; white-space:normal; word-break:normal; overflow-wrap:break-word; font-style:italic; color:#666666;">"在这里，开始触摸真实世界的分量。"</p>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+    
+        <!-- === NODE 3: 深圳一瓯茶 === -->
+        <div class="timeline-node">
+          <div class="timeline-dot"></div>
+          <div class="timeline-left">
+            <div class="timeline-content" style="text-align:left;">
+              <span class="timeline-date">2025.03 — 2025.05</span>
+              <span class="timeline-label">市场部 · 项目负责人</span>
+              <h3 class="timeline-heading" style="text-align:left;">深圳一瓯茶有限公司</h3>
+              <p style="margin:0 0 14px 0; padding:0; text-align:left; font-family:'JetBrains Mono',monospace; font-size:14px; font-weight:400; color:#111; line-height:1.9; width:100%; white-space:normal; word-break:normal; overflow-wrap:break-word; hyphens:none;"><svg style="width:14px;height:14px;margin-right:6px;margin-bottom:2px;vertical-align:middle;display:inline-block;" viewBox="0 0 14 14" fill="none" stroke="#f5a623" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M7,0.5 L8.7,4.5 L13,4.8 L9.4,8 L10.6,12.5 L7,10 L3.4,12.5 L4.6,8 L1,4.8 L5.3,4.5 Z"></path></svg><span style="font-weight:700;">用户洞察：</span>主导「春日记忆」活动策划与落地，现场追踪用户行为发现原规则参与门槛过高导致用户流失；将捆绑式参与条件拆解为独立分层激励，现场转化率从不足10%提升至约12%；活动累计吸引110+用户参与</p>
+              <p style="margin:0; padding:0; text-align:left; font-family:'JetBrains Mono',monospace; font-size:14px; font-weight:400; color:#111; line-height:1.9; width:100%; white-space:normal; word-break:normal; overflow-wrap:break-word; hyphens:none;"><svg style="width:14px;height:14px;margin-right:6px;margin-bottom:2px;vertical-align:middle;display:inline-block;" viewBox="0 0 14 14" fill="none" stroke="#f5a623" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M7,0.5 L8.7,4.5 L13,4.8 L9.4,8 L10.6,12.5 L7,10 L3.4,12.5 L4.6,8 L1,4.8 L5.3,4.5 Z"></path></svg><span style="font-weight:700;">项目管理：</span>在资源有限、标准缺失的环境下主导活动落地；识别海报返工原因为文案信息过载影响视觉呈现，优先精简文案，降低返工成本；发现物料供应存在延误风险，快速切换为本地供应渠道应急</p>
+            </div>
+          </div>
+          <div class="timeline-right">
+            <div class="timeline-doodle-card" style="width:200px; min-height:auto; padding:1rem;">
+            <div style="font-family:'JetBrains Mono','Cascadia Code','Consolas',monospace; font-size:11px; color:#b08830; margin-bottom:8px; letter-spacing:0.04em;">春日记忆 · 活动推文</div>
+            <a href="https://mp.weixin.qq.com/s/-ktvpw9HY8xKiq7L-ocdJA" target="_blank" style="display:block; text-decoration:none;">
+              <img src="./poster.jpg" alt="春日记忆活动海报" style="width:100%; height:auto; max-height:260px; object-fit:cover; border-radius:3px; border:1px solid rgba(244,114,182,0.3); display:block;">
+            </a>
+            <a href="https://mp.weixin.qq.com/s/-ktvpw9HY8xKiq7L-ocdJA" target="_blank" style="display:inline-block; margin-top:8px; background:#f5a623; color:white; font-size:11px; padding:4px 10px; border:none; border-radius:2px; cursor:pointer; text-decoration:none; font-family:'JetBrains Mono','Cascadia Code','Consolas',monospace;">查看海报 →</a>
+            <svg style="position:absolute; bottom:8px; right:8px; width:14px; height:14px; opacity:0.85;" viewBox="0 0 14 14" fill="none" stroke="#f5a623" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">
+              <path d="M7,0.5 L8.7,4.5 L13,4.8 L9.4,8 L10.6,12.5 L7,10 L3.4,12.5 L4.6,8 L1,4.8 L5.3,4.5 Z"></path>
+            </svg>
+            </div>
+          </div>
+        </div>
+    
+    
+        <!-- === NODE 4: 科尔尼 · PTA === -->
+        <div class="timeline-node" style="margin-bottom:clamp(4px,0.75vh,10px);">
+          <div class="timeline-dot"></div>
+          <div class="timeline-left">
+            <div></div>
+          </div>
+          <div class="timeline-right">
+            <div class="timeline-content">
+              <span class="timeline-date">2025.10 — 2026.01</span>
+              <span class="timeline-label">PTA</span>
+            <h3 class="timeline-heading">科尔尼咨询</h3>
+            <p style="margin:0 0 14px 0; padding:0; text-align:left; font-family:'JetBrains Mono',monospace; font-size:14px; font-weight:400; color:#111; line-height:1.9; word-break:normal; overflow-wrap:break-word;"><svg style="width:14px;height:14px;margin-right:6px; margin-bottom:2px;vertical-align:middle;display:inline-block;" viewBox="0 0 14 14" fill="none" stroke="#f5a623" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M7,0.5 L8.7,4.5 L13,4.8 L9.4,8 L10.6,12.5 L7,10 L3.4,12.5 L4.6,8 L1,4.8 L5.3,4.5 Z"></path></svg><span style="font-weight:700;">结构化分析：</span>针对乳制品市场多源数据口径差异问题，统一品类分类和估算方法，整合各品类市场规模与增速数据，提升多源数据可比性，确保策略底稿准确</p>
+            <p style="margin:0; padding:0; text-align:left; font-family:'JetBrains Mono',monospace; font-size:14px; font-weight:400; color:#111; line-height:1.9; word-break:normal; overflow-wrap:break-word;"><svg style="width:14px;height:14px;margin-right:6px; margin-bottom:2px;vertical-align:middle;display:inline-block;" viewBox="0 0 14 14" fill="none" stroke="#f5a623" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M7,0.5 L8.7,4.5 L13,4.8 L9.4,8 L10.6,12.5 L7,10 L3.4,12.5 L4.6,8 L1,4.8 L5.3,4.5 Z"></path></svg><span style="font-weight:700;">竞品分析：</span>通过多语种渠道检索整合100+竞品信息，结合体量、品类结构、渠道策略等维度梳理竞品图谱；规范化整理专家访谈纪要，推动信息同步</p>
+          </div>
+          </div>
+        </div>
+    
+    
+        <!-- === NODE 5: Shopee · SSP === -->
+        <div class="timeline-node" style="margin-top:-20px;">
+          <div class="timeline-dot"></div>
+          <div class="timeline-left">
+            <div class="timeline-content" style="width:462px;">
+            <span class="timeline-date">2026.02 — 2026.05</span>
+            <span class="timeline-label">华人战略卖家激励项目</span>
+            <h3 class="timeline-heading">Shopee</h3>
+            <p style="margin:0 0 12px 0; padding:0; text-align:left; font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:400; color:#1a3fcc; line-height:1.8; word-break:normal; overflow-wrap:break-word;">通过对入围卖家设置GMV与营销投入目标、向达标卖家发放激励的涨则返机制，以平台投入换取卖家在平台的增长；负责卖家圈选、目标制定、达标推送的数据支撑与流程优化</p>
+            <p style="margin:0 0 14px 0; padding:0; text-align:left; font-family:'JetBrains Mono',monospace; font-size:14px; font-weight:400; color:#111; line-height:1.9; word-break:normal; overflow-wrap:break-word;"><svg style="width:14px;height:14px;margin-right:6px; margin-bottom:2px;vertical-align:middle;display:inline-block;" viewBox="0 0 14 14" fill="none" stroke="#f5a623" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M7,0.5 L8.7,4.5 L13,4.8 L9.4,8 L10.6,12.5 L7,10 L3.4,12.5 L4.6,8 L1,4.8 L5.3,4.5 Z"></path></svg><span style="font-weight:700;">业务建模：</span>主导Q3卖家初筛，整合2.7万条跨时间、站点、GGP维度数据，依据ADG体量、PC2表现、同比增长率等多因子条件筛选500+卖家；理解SOB分层下的Grow/Defend差异化激励逻辑，完成300+卖家月度目标推送</p>
+            <p style="margin:0; padding:0; text-align:left; font-family:'JetBrains Mono',monospace; font-size:14px; font-weight:400; color:#111; line-height:1.9; word-break:normal; overflow-wrap:break-word;"><svg style="width:14px;height:14px;margin-right:6px; margin-bottom:2px;vertical-align:middle;display:inline-block;" viewBox="0 0 14 14" fill="none" stroke="#f5a623" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M7,0.5 L8.7,4.5 L13,4.8 L9.4,8 L10.6,12.5 L7,10 L3.4,12.5 L4.6,8 L1,4.8 L5.3,4.5 Z"></path></svg><span style="font-weight:700;">流程优化：</span>针对达标推送中的重复性执行环节，识别其数据驱动、规则固定、输出格式标准化的特点，开发Apps Script脚本实现自动化，将单次执行时间从2小时压缩至2分钟，工具已被团队继任者复用</p>
+          </div>
+          </div>
+          <div class="timeline-right">
+            <div></div>
+        </div>
+        </div>
+      </div><!-- end timeline -->
+    
+      <!-- ===== Chronicle decorative layer ===== -->
+      <div class="chronicle-deco">
+        <!-- Stars -->
+        <svg class="deco-star-ch" style="position:absolute; top:8%; right:12%; width:20px; height:20px; opacity:0.5;" viewBox="0 0 24 24" fill="none" stroke="#1a3fcc" stroke-width="1.8">
+          <polygon points="12,2 14.5,9 22,9 16,13.5 18.5,21 12,16.5 5.5,21 8,13.5 2,9 9.5,9" stroke-linejoin="round"></polygon>
+        </svg>
+        <svg class="deco-star-ch" style="position:absolute; top:35%; right:5%; width:16px; height:16px; opacity:0.45;" viewBox="0 0 24 24" fill="none" stroke="#f5a623" stroke-width="2">
+          <polygon points="12,2 14.5,9 22,9 16,13.5 18.5,21 12,16.5 5.5,21 8,13.5 2,9 9.5,9" stroke-linejoin="round"></polygon>
+        </svg>
+        <svg class="deco-star-ch" style="position:absolute; bottom:20%; left:4%; width:18px; height:18px; opacity:0.4;" viewBox="0 0 24 24" fill="none" stroke="#1a3fcc" stroke-width="1.6">
+          <polygon points="12,2 14.5,9 22,9 16,13.5 18.5,21 12,16.5 5.5,21 8,13.5 2,9 9.5,9" stroke-linejoin="round"></polygon>
+        </svg>
+        <svg class="deco-star-ch" style="position:absolute; bottom:10%; right:20%; width:14px; height:14px; opacity:0.5;" viewBox="0 0 24 24" fill="none" stroke="#f472b6" stroke-width="1.8">
+          <polygon points="12,2 14.5,9 22,9 16,13.5 18.5,21 12,16.5 5.5,21 8,13.5 2,9 9.5,9" stroke-linejoin="round"></polygon>
+        </svg>
+        <!-- Dots -->
+        <div style="position:absolute; top:20%; right:22%; width:5px; height:5px; border-radius:50%; background:var(--blue-deep); opacity:0.35;"></div>
+        <div style="position:absolute; top:55%; left:6%; width:6px; height:6px; border-radius:50%; background:var(--blue-deep); opacity:0.3;"></div>
+        <div style="position:absolute; bottom:35%; right:10%; width:4px; height:4px; border-radius:50%; background:var(--blue-deep); opacity:0.4;"></div>
+        <!-- Curved text -->
+        <svg style="position:absolute; top:30%; right:3%; width:140px; height:140px; opacity:0.45;" viewBox="0 0 140 140">
+          <defs>
+            <path id="arcPath2" d="M 8,120 A 90,90 0 0,1 132,18"></path>
+          </defs>
+          <text font-family="'JetBrains Mono','Cascadia Code','Consolas',monospace" font-size="9" fill="#1a3fcc" opacity="0.55" letter-spacing="0.12em">
+            <textPath href="#arcPath2" startOffset="5%">
+              ✦ education · growth · journey ✦
+            </textPath>
+          </text>
+        </svg>
+      </div>
+    
+    </section><!-- end chronicle-section -->
+    
+    <!-- ============================================================ -->
     <!-- MORE SECTION -->
     <!-- ============================================================ -->
     <section class="more-section" id="more">
@@ -2355,14 +2279,6 @@
       </div>
     </div>
     
-    <!-- Accordion Modal -->
-    <div class="more-modal-overlay" id="accordion-modal" onclick="closeAccordionModal(event)">
-      <div class="more-modal more-modal--accordion" onclick="event.stopPropagation()">
-        <button class="more-modal__close" onclick="closeAccordionModal()">×</button>
-        <div class="more-modal__img-area"><img src="./music.jpg" alt="手风琴"></div>
-        <div class="more-modal__text-area">从九岁开始学习手风琴</div>
-      </div>
-    </div>
     
     <script>
     /* ========== Photo Book ========== */
@@ -2459,21 +2375,6 @@
       }
     });
     
-    /* ========== Accordion Modal ========== */
-    function openAccordionModal() {
-      document.getElementById('accordion-modal').classList.add('open');
-    }
-    
-    function closeAccordionModal(e) {
-      if (e && e.target !== document.getElementById('accordion-modal')) return;
-      document.getElementById('accordion-modal').classList.remove('open');
-    }
-    
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && document.getElementById('accordion-modal').classList.contains('open')) {
-        document.getElementById('accordion-modal').classList.remove('open');
-      }
-    });
 
     /* ========== Copy Phone Number ========== */
     function copyPhone(btn) {
