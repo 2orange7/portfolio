@@ -1699,6 +1699,15 @@
       #projects .xhs-wrap { margin-top: -270px; margin-right: -56px; padding-right: 0; position: relative; z-index: 4; }
       #projects .xhs-wrap > .project-card { width: min(100%, 480px) !important; box-sizing: border-box; margin-top: 0 !important; }
     }
+      @media (max-width: 900px) {
+      section[id] { scroll-margin-top: 58px; }
+      .project-card--wide .project-card__sticky { right: 6px !important; top: -10px !important; max-width: calc(100% - 20px); box-sizing: border-box; }
+    }
+      @media (max-width: 900px) {
+      .chronicle-title-outline, .projects-title-outline, .more-title-outline, .contact-title-outline {
+        font-size: clamp(42px, 10vw, 64px) !important; max-width: 100% !important; white-space: nowrap;
+      }
+    }
   </style>
     </head>
     <body>
