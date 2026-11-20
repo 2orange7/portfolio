@@ -1708,6 +1708,29 @@
         font-size: clamp(42px, 10vw, 64px) !important; max-width: 100% !important; white-space: nowrap;
       }
     }
+      /* 手机/平板首屏：名字+便签在左，照片在右并排 */
+    @media (max-width: 900px) {
+      .page { grid-template-columns: minmax(0, 1fr) clamp(128px, 38vw, 200px); grid-template-rows: auto auto auto; column-gap: 12px; min-height: 0; padding-bottom: 28px; }
+      .title-group { grid-column: 1; grid-row: 1; padding: 0; }
+      .title-outline { font-size: clamp(22px, 6.4vw, 40px); -webkit-text-stroke: 1.8px var(--blue-deep); }
+      .title-solid { font-size: clamp(40px, 12vw, 72px); white-space: nowrap; }
+      .sticky-note { grid-column: 1; grid-row: 2; margin: 14px 0 0; padding: 14px 14px 12px; transform: rotate(-1deg); }
+      .note-content { font-size: 12.5px; }
+      .photo-area { grid-column: 2; grid-row: 1 / 3; transform: none; padding: 0; justify-content: center; align-items: flex-start; margin-top: 6px; }
+      .photo-backdrop { width: clamp(138px, 40vw, 210px); height: clamp(210px, 62vw, 320px); }
+      .photo-frame { width: clamp(118px, 34vw, 180px); height: clamp(186px, 55vw, 290px); margin-top: 8px; }
+      .annotations { grid-column: 1 / -1; grid-row: 3; margin-top: 22px; }
+      .hero-section { min-height: 0; }
+      .accent-line { display: none; }
+      .deco-layer .deco-squiggle { display: none; }
+      .deco-layer > svg:not([class]) { display: none; }
+      .page { padding-top: 84px; }
+      .chronicle-section { padding-top: 36px; min-height: 0; }
+      .sticky-note { padding: 12px 12px 10px; margin-top: 12px; width: 94%; }
+      .note-content { font-size: 12px; }
+      .note-main { font-size: 14px; }
+      .note-quote { font-size: 11.5px; }
+    }
   </style>
     </head>
     <body>
